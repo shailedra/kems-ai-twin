@@ -1,4 +1,5 @@
-import { Database, Network, Brain, MessageSquare, ChevronRight } from "lucide-react";
+import { Database, Network, Brain, MessageSquare, ChevronRight, Fragment as F } from "lucide-react";
+import { Fragment } from "react";
 
 const layers = [
   {
@@ -28,14 +29,10 @@ export function ArchitectureDiagram() {
     <div className="relative rounded-2xl border hairline bg-surface-elevated p-6 md:p-10">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-blue/40 to-transparent" />
 
-      <div className="grid gap-3 md:grid-cols-7 md:items-stretch">
+      <div className="grid gap-4 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] md:items-stretch">
         {layers.map((layer, i) => (
-          <>
-            <div
-              key={layer.title}
-              className="md:col-span-1 group relative flex flex-col rounded-xl border hairline bg-background p-5 transition-shadow hover:shadow-sm"
-              style={{ gridColumn: "span 1 / span 1" }}
-            >
+          <Fragment key={layer.title}>
+            <div className="group relative flex flex-col rounded-xl border hairline bg-background p-5 transition-shadow hover:shadow-sm">
               <div className="flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-md bg-accent-blue-soft text-accent-blue">
                   <layer.icon className="h-4 w-4" />
@@ -53,21 +50,12 @@ export function ArchitectureDiagram() {
             </div>
 
             {i < layers.length - 1 && (
-              <div
-                key={`arrow-${i}`}
-                className="hidden items-center justify-center md:flex"
-                style={{ gridColumn: "span 1 / span 1" }}
-              >
+              <div className="hidden items-center justify-center md:flex">
                 <ChevronRight className="h-4 w-4 text-ink-muted/50" />
               </div>
             )}
-          </>
+          </Fragment>
         ))}
-      </div>
-
-      {/* Mobile flow indicators */}
-      <div className="mt-4 flex justify-center md:hidden">
-        <div className="text-[10px] uppercase tracking-widest text-ink-muted">Data flows downstream →</div>
       </div>
     </div>
   );
