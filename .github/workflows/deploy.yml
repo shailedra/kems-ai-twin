@@ -18,19 +18,20 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22 # Updated to latest stable Node
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Build
+        # We put the environment variable directly on the build command
+        run: npm run build
         env:
           NITRO_PRESET: github-pages
-      - name: Build
-        run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./.output/public # Lovable/Vite projects output to the 'dist' folder
-
+          # TanStack Start creates this specific folder for GitHub Pages
+          path: .output/public
   deploy:
     environment:
       name: github-pages
