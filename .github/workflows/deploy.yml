@@ -22,6 +22,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+        env:
+          NITRO_PRESET: github-pages
       - name: Build
         run: npm run build
       - name: Upload artifact
