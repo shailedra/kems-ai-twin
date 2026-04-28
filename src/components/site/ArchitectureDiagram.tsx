@@ -1,4 +1,4 @@
-import { Database, Network, Brain, MessageSquare, ChevronRight, Fragment as F } from "lucide-react";
+import { Database, Network, Brain, MessageSquare, ChevronRight } from "lucide-react";
 import { Fragment } from "react";
 
 const layers = [
